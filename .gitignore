@@ -1,0 +1,28 @@
+# Playwright
+.playwright-mcp/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Models (too large for git)
+models/
+*.safetensors
+*.ckpt
+*.pt
+
+# Outputs
+outputs/
+*.mp4
