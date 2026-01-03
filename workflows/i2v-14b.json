@@ -715,7 +715,7 @@
         ]
       },
       "widgets_values": [
-        "wan_2.1_vae.safetensors"
+        "wan2.2_vae.safetensors"
       ]
     },
     {
@@ -1334,7 +1334,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "wan2.1\\Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors",
+        "Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors",
         2.5000000000000004
       ]
     },
@@ -1375,7 +1375,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "wan2.1\\Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors",
+        "Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors",
         2.5000000000000004
       ]
     },
@@ -1675,7 +1675,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "wan2.1\\lightx2v_14B_T2V_cfg_step_distill_lora_adaptive_rank_quantile_0.15_bf16.safetensors",
+        "lightx2v_14B_T2V_cfg_step_distill_lora_adaptive_rank_quantile_0.15_bf16.safetensors",
         2.5000000000000004
       ]
     },
@@ -1717,7 +1717,7 @@
         ]
       },
       "widgets_values": [
-        "wan2.2\\wan2.2_i2v_high_noise_14B_fp16.safetensors",
+        "wan2.2_i2v_high_noise_14B_fp16.safetensors",
         "default"
       ]
     },
@@ -1759,7 +1759,7 @@
         ]
       },
       "widgets_values": [
-        "wan2.2\\wan2.2_i2v_low_noise_14B_fp16.safetensors",
+        "wan2.2_i2v_low_noise_14B_fp16.safetensors",
         "default"
       ]
     },
