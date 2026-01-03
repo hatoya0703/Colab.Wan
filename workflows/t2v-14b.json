@@ -74,18 +74,82 @@
       ]
     },
     {
-      "id": 4,
-      "type": "CLIPTextEncode",
-      "pos": [500, 100],
-      "size": [400, 150],
+      "id": 11,
+      "type": "DeepTranslatorTextNode",
+      "pos": [500, 50],
+      "size": [400, 170],
       "flags": {},
       "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [11]
+        }
+      ],
+      "title": "Positive (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "夕暮れのビーチを歩く猫、シネマティックな照明、4K、滑らかな動き"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 12,
+      "type": "DeepTranslatorTextNode",
+      "pos": [500, 270],
+      "size": [400, 170],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [12]
+        }
+      ],
+      "title": "Negative (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "ぼやけ、低画質、歪み、透かし、静止、変形、醜い"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [950, 50],
+      "size": [300, 100],
+      "flags": {},
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
           "link": 2
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 11,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -95,12 +159,12 @@
           "links": [5]
         }
       ],
-      "title": "CLIP Text Encode (Positive Prompt)",
+      "title": "Positive Encode",
       "properties": {
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "A cat walking on the beach at sunset, cinematic lighting, 4K, smooth motion, high quality video"
+        ""
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -108,16 +172,24 @@
     {
       "id": 5,
       "type": "CLIPTextEncode",
-      "pos": [500, 300],
-      "size": [400, 150],
+      "pos": [950, 200],
+      "size": [300, 100],
       "flags": {},
-      "order": 4,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
           "link": 3
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 12,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -127,12 +199,12 @@
           "links": [6]
         }
       ],
-      "title": "CLIP Text Encode (Negative Prompt)",
+      "title": "Negative Encode",
       "properties": {
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "blurry, low quality, distortion, watermark, static, deformed, ugly, bad anatomy"
+        ""
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -140,10 +212,10 @@
     {
       "id": 6,
       "type": "EmptyHunyuanLatentVideo",
-      "pos": [500, 500],
+      "pos": [500, 490],
       "size": [300, 130],
       "flags": {},
-      "order": 5,
+      "order": 7,
       "mode": 0,
       "outputs": [
         {
@@ -165,10 +237,10 @@
     {
       "id": 7,
       "type": "ModelSamplingSD3",
-      "pos": [950, 100],
+      "pos": [950, 350],
       "size": [250, 58],
       "flags": {},
-      "order": 6,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -192,10 +264,10 @@
     {
       "id": 8,
       "type": "KSampler",
-      "pos": [950, 200],
+      "pos": [950, 450],
       "size": [300, 262],
       "flags": {},
-      "order": 7,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -242,10 +314,10 @@
     {
       "id": 9,
       "type": "VAEDecode",
-      "pos": [1300, 200],
+      "pos": [1300, 450],
       "size": [200, 46],
       "flags": {},
-      "order": 8,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -273,10 +345,10 @@
     {
       "id": 10,
       "type": "VHS_VideoCombine",
-      "pos": [1300, 300],
+      "pos": [1300, 550],
       "size": [400, 500],
       "flags": {},
-      "order": 9,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -339,7 +411,9 @@
     [7, 6, 0, 8, 3, "LATENT"],
     [8, 7, 0, 8, 0, "MODEL"],
     [9, 8, 0, 9, 0, "LATENT"],
-    [10, 9, 0, 10, 0, "IMAGE"]
+    [10, 9, 0, 10, 0, "IMAGE"],
+    [11, 11, 0, 4, 1, "STRING"],
+    [12, 12, 0, 5, 1, "STRING"]
   ],
   "groups": [
     {
@@ -352,8 +426,8 @@
     },
     {
       "id": 2,
-      "title": "Prompt",
-      "bounding": [480, 50, 440, 420],
+      "title": "Prompt (日本語対応)",
+      "bounding": [480, 0, 440, 480],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
@@ -361,7 +435,7 @@
     {
       "id": 3,
       "title": "Sampling",
-      "bounding": [930, 50, 340, 450],
+      "bounding": [930, 0, 340, 750],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
@@ -369,7 +443,7 @@
     {
       "id": 4,
       "title": "Output",
-      "bounding": [1280, 150, 440, 700],
+      "bounding": [1280, 400, 440, 700],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}

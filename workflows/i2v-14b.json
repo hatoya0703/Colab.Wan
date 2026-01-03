@@ -1,8 +1,8 @@
 {
   "id": "i2v-14b-workflow-v2",
   "revision": 0,
-  "last_node_id": 14,
-  "last_link_id": 18,
+  "last_node_id": 15,
+  "last_link_id": 20,
   "nodes": [
     {
       "id": 1,
@@ -124,18 +124,82 @@
       ]
     },
     {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [500, 100],
-      "size": [400, 150],
+      "id": 14,
+      "type": "DeepTranslatorTextNode",
+      "pos": [500, 50],
+      "size": [400, 170],
       "flags": {},
       "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [19]
+        }
+      ],
+      "title": "Positive (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "被写体が動き出す、シネマティックな動き、滑らかなアニメーション、高品質な動画"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 15,
+      "type": "DeepTranslatorTextNode",
+      "pos": [500, 270],
+      "size": [400, 170],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [20]
+        }
+      ],
+      "title": "Negative (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "ぼやけ、低画質、歪み、透かし、静止、変形、醜い"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [950, 50],
+      "size": [300, 100],
+      "flags": {},
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
           "link": 2
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 19,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -145,12 +209,12 @@
           "links": [8]
         }
       ],
-      "title": "CLIP Text Encode (Positive Prompt)",
+      "title": "Positive Encode",
       "properties": {
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "The subject starts to move, cinematic motion, smooth animation, high quality video"
+        ""
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -158,16 +222,24 @@
     {
       "id": 7,
       "type": "CLIPTextEncode",
-      "pos": [500, 300],
-      "size": [400, 150],
+      "pos": [950, 200],
+      "size": [300, 100],
       "flags": {},
-      "order": 6,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
           "name": "clip",
           "type": "CLIP",
           "link": 3
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 20,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -177,12 +249,12 @@
           "links": [9]
         }
       ],
-      "title": "CLIP Text Encode (Negative Prompt)",
+      "title": "Negative Encode",
       "properties": {
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "blurry, low quality, distortion, watermark, static, deformed, ugly, bad anatomy"
+        ""
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -190,10 +262,10 @@
     {
       "id": 8,
       "type": "CLIPVisionEncode",
-      "pos": [500, 500],
+      "pos": [500, 490],
       "size": [300, 78],
       "flags": {},
-      "order": 7,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -222,10 +294,10 @@
     {
       "id": 9,
       "type": "WanImageToVideo",
-      "pos": [500, 630],
+      "pos": [500, 620],
       "size": [300, 210],
       "flags": {},
-      "order": 8,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -284,10 +356,10 @@
     {
       "id": 10,
       "type": "ModelSamplingSD3",
-      "pos": [950, 100],
+      "pos": [950, 350],
       "size": [250, 58],
       "flags": {},
-      "order": 9,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -311,10 +383,10 @@
     {
       "id": 11,
       "type": "KSampler",
-      "pos": [950, 200],
+      "pos": [950, 450],
       "size": [300, 262],
       "flags": {},
-      "order": 10,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -361,10 +433,10 @@
     {
       "id": 12,
       "type": "VAEDecode",
-      "pos": [1300, 200],
+      "pos": [1300, 450],
       "size": [200, 46],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -392,10 +464,10 @@
     {
       "id": 13,
       "type": "VHS_VideoCombine",
-      "pos": [1300, 300],
+      "pos": [1300, 550],
       "size": [400, 500],
       "flags": {},
-      "order": 12,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -465,7 +537,9 @@
     [14, 3, 0, 9, 2, "VAE"],
     [15, 10, 0, 11, 0, "MODEL"],
     [16, 11, 0, 12, 0, "LATENT"],
-    [17, 12, 0, 13, 0, "IMAGE"]
+    [17, 12, 0, 13, 0, "IMAGE"],
+    [19, 14, 0, 6, 1, "STRING"],
+    [20, 15, 0, 7, 1, "STRING"]
   ],
   "groups": [
     {
@@ -486,8 +560,8 @@
     },
     {
       "id": 3,
-      "title": "Prompt & Vision Encode",
-      "bounding": [480, 50, 440, 820],
+      "title": "Prompt (日本語対応)",
+      "bounding": [480, 0, 440, 480],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
@@ -495,7 +569,7 @@
     {
       "id": 4,
       "title": "Sampling",
-      "bounding": [930, 50, 340, 450],
+      "bounding": [930, 0, 340, 750],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
@@ -503,7 +577,7 @@
     {
       "id": 5,
       "title": "Output",
-      "bounding": [1280, 150, 440, 700],
+      "bounding": [1280, 400, 440, 700],
       "color": "#3f789e",
       "font_size": 24,
       "flags": {}
