@@ -1,8 +1,8 @@
 {
   "id": "91f6bbe2-ed41-4fd6-bac7-71d5b5864ecb",
   "revision": 0,
-  "last_node_id": 132,
-  "last_link_id": 196,
+  "last_node_id": 134,
+  "last_link_id": 198,
   "nodes": [
     {
       "id": 7,
@@ -23,6 +23,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 113
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 198,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -213,6 +221,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 119
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 197,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -1619,6 +1635,74 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 133,
+      "type": "DeepTranslatorTextNode",
+      "pos": [
+        -550,
+        100
+      ],
+      "size": [
+        400,
+        170
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [197]
+        }
+      ],
+      "title": "Positive (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "ネオンライトに照らされたサイバーパンクな街を走る赤いスポーツカー、雨、シネマティック"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 134,
+      "type": "DeepTranslatorTextNode",
+      "pos": [
+        -550,
+        320
+      ],
+      "size": [
+        400,
+        170
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [198]
+        }
+      ],
+      "title": "Negative (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "ぼやけ、低画質、歪み、透かし、静止、変形、醜い"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -1885,6 +1969,22 @@
       92,
       2,
       "CONDITIONING"
+    ],
+    [
+      197,
+      133,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      198,
+      134,
+      0,
+      7,
+      1,
+      "STRING"
     ]
   ],
   "groups": [

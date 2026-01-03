@@ -1,8 +1,8 @@
 {
   "id": "91f6bbe2-ed41-4fd6-bac7-71d5b5864ecb",
   "revision": 0,
-  "last_node_id": 131,
-  "last_link_id": 191,
+  "last_node_id": 133,
+  "last_link_id": 193,
   "nodes": [
     {
       "id": 7,
@@ -23,6 +23,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 113
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 193,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -213,6 +221,14 @@
           "name": "clip",
           "type": "CLIP",
           "link": 119
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 192,
+          "widget": {
+            "name": "text"
+          }
         }
       ],
       "outputs": [
@@ -2164,6 +2180,74 @@
         "customSortAlphabet": "",
         "toggleRestriction": "default"
       }
+    },
+    {
+      "id": 132,
+      "type": "DeepTranslatorTextNode",
+      "pos": [
+        -550,
+        100
+      ],
+      "size": [
+        400,
+        170
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [192]
+        }
+      ],
+      "title": "Positive (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "被写体が動き出す、シネマティックな動き、滑らかなアニメーション、高品質な動画"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 133,
+      "type": "DeepTranslatorTextNode",
+      "pos": [
+        -550,
+        320
+      ],
+      "size": [
+        400,
+        170
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [193]
+        }
+      ],
+      "title": "Negative (日本語→英語)",
+      "properties": {
+        "Node name for S&R": "DeepTranslatorTextNode"
+      },
+      "widgets_values": [
+        "auto",
+        "en",
+        "GoogleTranslator",
+        "ぼやけ、低画質、歪み、透かし、静止、変形、醜い"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -2526,6 +2610,22 @@
       131,
       0,
       "VIDEO"
+    ],
+    [
+      192,
+      132,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      193,
+      133,
+      0,
+      7,
+      1,
+      "STRING"
     ]
   ],
   "groups": [
